@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { VizeCGIConfig } from '@vize/cgi';
 import { login } from './middlewares/login';
+import { user } from './middlewares/user';
 
 export function getConfig(): VizeCGIConfig {
   const workspacePath = path.resolve(
@@ -40,6 +41,7 @@ export function getConfig(): VizeCGIConfig {
     },
     middlewares: {
       login,
+      user,
     },
   };
 }

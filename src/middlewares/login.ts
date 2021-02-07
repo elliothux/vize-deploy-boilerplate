@@ -1,19 +1,24 @@
+import * as path from 'path';
 import {
-  CGIMiddlewareItem,
-  MiddlewareNextFunction,
-  MiddlewareRequest,
+  CGIMiddleware,
+  getUserService,
   MiddlewareRequestMethod,
-  MiddlewareResponse,
 } from '@vize/cgi';
 
-export const login: CGIMiddlewareItem = {
-  apply: (
-    _req: MiddlewareRequest,
-    _res: MiddlewareResponse,
-    next: MiddlewareNextFunction,
-  ) => {
-    console.log(_req);
-    next();
+export const login: CGIMiddleware = {
+  apply: async (_request, response) => {
+    const userService = getUserService();
+    if (!(await userService.checkUserExists('tourist'))) {
+      await userService.createUserEntity({
+        name: 'tourist',
+        isAdmin: 1,
+        bizs: [],
+      });
+    }
+    response.cookie('vize_user_name', 'tourist');
+    response.sendFile(path.resolve(__dirname, '../pages/login/index.html'), {
+      cacheControl: false,
+    });
   },
-  forRoutes: [{ path: '/cgi/login', method: MiddlewareRequestMethod.ALL }],
+  forRoutes: [{ path: '/login', method: MiddlewareRequestMethod.ALL }],
 };
