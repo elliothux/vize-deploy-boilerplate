@@ -6,9 +6,15 @@ import {
 } from '@vize/cgi';
 
 export const user: CGIMiddleware = {
-  apply: async (_request, response) => {
+  apply: async (request, response) => {
+    const name = request.cookies['vize_user_name'];
+    if (!name) {
+      response.send(CGIResponse.success());
+      return;
+    }
+
     const userService = getUserService();
-    const result = await userService.getBizEntityByName('tourist');
+    const result = await userService.getBizEntityByName(name);
     response.send(CGIResponse.success(result));
   },
   forRoutes: [{ path: '/cgi/user/my', method: MiddlewareRequestMethod.GET }],

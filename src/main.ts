@@ -1,4 +1,4 @@
 import { bootstrap } from '@vize/cgi';
-import { getConfig } from './config';
+import { config } from './config';
 
-bootstrap(getConfig());
+bootstrap(config);

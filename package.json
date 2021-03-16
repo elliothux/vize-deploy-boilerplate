@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/main",
   "scripts": {
-    "copyFiles": "cp -r ./src/pages ./dist",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -21,7 +20,7 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@vize/cgi": "/Users/huqingyang/Desktop/Proj/vize/packages/cgi"
+    "@vize/cgi": "^0.0.2"
   },
   "author": "",
   "license": "ISC",
