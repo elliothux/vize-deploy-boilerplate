@@ -20,11 +20,15 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@vize/cgi": "^0.0.2"
+    "@vize/cgi": "^0.1.0",
+    "@vize/editor": "^0.1.6",
+    "@vize/generator-web": "^0.1.1",
+    "@vize/management-ui": "^0.1.1",
+    "@vize/publisher-web": "^0.1.1"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@vize/types": "^0.1.7"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
