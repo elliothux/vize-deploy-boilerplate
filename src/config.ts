@@ -3,7 +3,7 @@ import { VizeCGIConfig } from '@vize/cgi';
 import { user } from './middlewares/user';
 
 export function getConfig(): VizeCGIConfig {
-  const workspacePath = path.resolve(__dirname, './workspace');
+  const workspacePath = path.resolve(__dirname, '../workspace');
 
   return {
     port: 4001,
