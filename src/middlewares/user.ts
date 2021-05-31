@@ -15,7 +15,7 @@ export const user: CGIMiddleware[] = [
         await userService.createUserEntity({
           name: 'tourist',
           isAdmin: 1,
-          avatar: '',
+          isDeveloper: 1,
           bizs: [],
           extInfo: JSON.stringify({}),
         });
