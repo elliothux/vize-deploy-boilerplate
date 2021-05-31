@@ -5,6 +5,7 @@ import {
   getUserService,
   MiddlewareRequestMethod,
 } from '@vize/cgi';
+import { v4 } from 'uuid';
 
 export const user: CGIMiddleware[] = [
   {
@@ -34,14 +35,15 @@ export const user: CGIMiddleware[] = [
   {
     apply: async (request, response) => {
       const name = request.cookies['vize_user_name'];
+      const requestId = v4();
       if (!name) {
-        response.send(CGIResponse.success());
+        response.send(CGIResponse.success(requestId));
         return;
       }
 
       const userService = getUserService();
       const result = await userService.getUserEntityByName(name);
-      response.send(CGIResponse.success(result));
+      response.send(CGIResponse.success(requestId, result));
     },
     forRoutes: [{ path: '/user-info', method: MiddlewareRequestMethod.GET }],
   },
