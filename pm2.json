@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "vize",
+      "script": "npm",
+      "args": "start:prod"
+    }
+  ]
+}
