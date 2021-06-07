@@ -26,7 +26,7 @@ export const upgrade: CGIMiddleware = {
     try {
       result['pull'] = await cp.execSync('git pull', options);
       result['install'] = await cp.execSync(
-        `npm i${npmRegistry ? ` --registry ${npmRegistry}` : ''}`,
+        `npm ci${npmRegistry ? ` --registry ${npmRegistry}` : ''}`,
         options,
       );
       result['build'] = await cp.execSync('npm run build', options);
